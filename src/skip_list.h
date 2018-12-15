@@ -430,7 +430,7 @@ public:
         { self_type old(*this); node = node->prev; return old; }
 
     reference operator*()  { return node->value; }
-    pointer   operator->() { return node->value; }
+    pointer   operator->() { return &(node->value); }
     
     bool operator==(const self_type &other) const
         { return node == other.node; }
@@ -498,7 +498,7 @@ public:
         { self_type old(*this); node = node->prev; return old; }
 
     const_reference operator*()  { return node->value; }
-    const_pointer   operator->() { return node->value; }
+    const_pointer   operator->() { return &node->value; }
 
     bool operator==(const self_type &other) const
         { return node == other.node; }
