@@ -16,7 +16,7 @@
 #endif
 
 //==============================================================================
-#pragma mark - internal forward declarations
+// #pragma mark - internal forward declarations
 
 namespace goodliffe {
 
@@ -30,7 +30,7 @@ namespace detail
 }
 
 //==============================================================================
-#pragma mark - diagnostics
+// #pragma mark - diagnostics
 //==============================================================================
 
 //#define SKIP_LIST_IMPL_DIAGNOSTICS 1
@@ -90,7 +90,7 @@ enum
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - skip_list level generators
+// #pragma mark - skip_list level generators
 //==============================================================================
 
 namespace goodliffe {
@@ -121,7 +121,7 @@ public:
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - value equivalence based on "less"
+// #pragma mark - value equivalence based on "less"
 //==============================================================================
 
 namespace goodliffe {
@@ -162,7 +162,7 @@ bool less_or_equal(const T &lhs, const T &rhs, Compare &less)
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - skip_list_level_generator
+// #pragma mark - skip_list_level_generator
 //==============================================================================
 
 namespace goodliffe {

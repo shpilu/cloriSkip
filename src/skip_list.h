@@ -20,7 +20,7 @@
 #endif
 
 //==============================================================================
-#pragma mark - internal forward declarations
+// #pragma mark - internal forward declarations
 
 namespace goodliffe {
 
@@ -37,7 +37,7 @@ namespace detail
 }
 
 //==============================================================================
-#pragma mark - skip_list
+// #pragma mark - skip_list
 //==============================================================================
 
 namespace goodliffe {
@@ -242,7 +242,7 @@ protected:
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - multi_skip_list
+// #pragma mark - multi_skip_list
 //==============================================================================
 
 namespace goodliffe {
@@ -327,7 +327,7 @@ public:
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - non-members
+// #pragma mark - non-members
 
 namespace goodliffe {
 
@@ -385,7 +385,7 @@ namespace std
 }
 
 //==============================================================================
-#pragma mark - iterators
+// #pragma mark - iterators
 //==============================================================================
 
 namespace goodliffe {
@@ -396,8 +396,8 @@ class sl_iterator
     : public std::iterator<std::bidirectional_iterator_tag,
                            typename SL_IMPL::value_type,
                            typename SL_IMPL::difference_type,
-                           typename SL_IMPL::const_pointer,
-                           typename SL_IMPL::const_reference>
+                           typename SL_IMPL::pointer,
+                           typename SL_IMPL::reference>
 {
 public:
     typedef SL_IMPL                         impl_type;
@@ -405,8 +405,8 @@ public:
     typedef typename impl_type::node_type   node_type;
     typedef sl_iterator<impl_type>          self_type;
 
-    typedef typename impl_type::const_reference const_reference;
-    typedef typename impl_type::const_pointer   const_pointer;
+    typedef typename impl_type::reference reference;
+    typedef typename impl_type::pointer   pointer;
 
     sl_iterator() :
 #ifdef SKIP_LIST_DIAGNOSTICS
@@ -429,8 +429,8 @@ public:
     self_type operator--(int) // postdecrement
         { self_type old(*this); node = node->prev; return old; }
 
-    const_reference operator*()  { return node->value; }
-    const_pointer   operator->() { return node->value; }
+    reference operator*()  { return node->value; }
+    pointer   operator->() { return node->value; }
     
     bool operator==(const self_type &other) const
         { return node == other.node; }
@@ -526,7 +526,7 @@ private:
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - lifetime management
+// #pragma mark - lifetime management
 //==============================================================================
 
 namespace goodliffe {
@@ -569,7 +569,7 @@ skip_list<T,C,A,LG,D>::skip_list(const skip_list &other, const allocator_type &a
 //skip_list(std::initializer_list<T> init, const Allocator &alloc = Allocator());
 
 //==============================================================================
-#pragma mark assignment
+// #pragma mark assignment
 
 template <class T, class C, class A, class LG, bool D>
 inline
@@ -592,7 +592,7 @@ void skip_list<T,C,A,LG,D>::assign(InputIterator first, InputIterator last)
 }
 
 //==============================================================================
-#pragma mark element access
+// #pragma mark element access
 
 template <class T, class C, class A, class LG, bool D>
 inline
@@ -631,7 +631,7 @@ skip_list<T,C,A,LG,D>::back() const
 }
 
 //==============================================================================
-#pragma mark modifiers
+// #pragma mark modifiers
 
 template <class T, class C, class A, class LG, bool D>
 inline
@@ -731,7 +731,7 @@ skip_list<T,C,A,LG,D>::erase(const_iterator first, const_iterator last)
 }
   
 //==============================================================================
-#pragma mark lookup
+// #pragma mark lookup
 
 template <class T, class C, class A, class LG, bool D>
 inline
@@ -763,7 +763,7 @@ skip_list<T,C,A,LG,D>::find(const value_type &value) const
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - multi_skip_list
+// #pragma mark - multi_skip_list
 //==============================================================================
 
 namespace goodliffe {
@@ -887,7 +887,7 @@ multi_skip_list<T,C,A,LG>::erase(const_iterator first, const_iterator last)
 } // namespace goodliffe
 
 //==============================================================================
-#pragma mark - sl_impl
+// #pragma mark - sl_impl
 //==============================================================================
 
 namespace goodliffe {
@@ -922,7 +922,9 @@ public:
     typedef T                                   value_type;
     typedef typename Allocator::size_type       size_type;
     typedef typename Allocator::difference_type difference_type;
+    typedef typename Allocator::reference       reference;
     typedef typename Allocator::const_reference const_reference;
+    typedef typename Allocator::pointer         pointer;
     typedef typename Allocator::const_pointer   const_pointer;
     typedef Allocator                           allocator_type;
     typedef Compare                             compare_type;
